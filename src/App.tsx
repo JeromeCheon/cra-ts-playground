@@ -1,8 +1,7 @@
 import './App.css';
 import styled from '@emotion/styled';
-import { useState } from 'react';
-import { Button } from './components/Button';
-import { Label } from './components/Label';
+import { Title } from './components/Title';
+import { TodoList } from './components/TodoList';
 
 const Container = styled.div`
   height: 100vh;
@@ -10,34 +9,14 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
-
-const Title = styled.div`
-  margin-bottom: 32px;
-`;
-
-const Contents = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #eeeeee;
 `;
 
 function App() {
-  const [counter, setCounter] = useState(0);
-  const onSubstractClick = () => {
-    setCounter(counter - 1);
-  };
-  const onAddClick = () => {
-    setCounter(counter + 1);
-  };
   return (
     <Container>
-      <Title>Counter App</Title>
-      <Contents>
-        <Button label={'-'} onClick={onSubstractClick} />
-        <Label data={counter} />
-        <Button label={'+'} onClick={onAddClick} />
-      </Contents>
+      <Title label="할 일 목록" />
+      <TodoList toDoList={['리액트 공부하기', '운동하기', '책읽기']} />
     </Container>
   );
 }
