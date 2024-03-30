@@ -1,8 +1,9 @@
 import './App.css';
 import styled from '@emotion/styled';
-import { Title } from './components/Title';
-import { TodoList } from './components/TodoList';
-import {useState} from "react";
+import { DataView } from './components/DataView';
+import { useState } from 'react';
+import { TextInput } from './components/TextInput';
+import { Button } from './components/Button';
 
 const Container = styled.div`
   height: 100vh;
@@ -14,16 +15,17 @@ const Container = styled.div`
 `;
 
 function App() {
-  const [toDoList, setToDoList] = useState(['리액트 공부하기', '운동하기', '책읽기'])
-
+  const [toDoList, setToDoList] = useState(['리액트 공부하기', '운동하기', '책읽기']);
+  const [todo, setTodo] = useState('');
   const onDelete = (todo: string) => {
-    setToDoList(toDoList.filter(item => item !== todo))
-  }
+    setToDoList(toDoList.filter((item) => item !== todo));
+  };
 
   return (
     <Container>
-      <Title label="할 일 목록" />
-      <TodoList toDoList={toDoList} onDelete={onDelete}/>
+      <DataView toDoList={toDoList} onDelete={onDelete} />
+      <TextInput value={todo} onChange={setTodo} />
+      <Button label="추가" />
     </Container>
   );
 }
