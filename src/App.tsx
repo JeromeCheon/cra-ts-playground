@@ -21,11 +21,17 @@ function App() {
     setToDoList(toDoList.filter((item) => item !== todo));
   };
 
+  const onAdd = () => {
+      if (todo === '') return ;
+
+      setToDoList([...toDoList, todo]);
+      setTodo('');
+  }
   return (
     <Container>
       <DataView toDoList={toDoList} onDelete={onDelete} />
       <TextInput value={todo} onChange={setTodo} />
-      <Button label="추가" />
+      <Button label="추가" color="#304FFE" onClick={onAdd}/>
     </Container>
   );
 }
