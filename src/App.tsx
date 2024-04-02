@@ -4,6 +4,8 @@ import { DataView } from './components/DataView';
 import { useState } from 'react';
 import { TextInput } from './components/TextInput';
 import { Button } from './components/Button';
+import { Title } from './components/Title';
+import { ToDoInput } from './components/TodoInput';
 
 const Container = styled.div`
   height: 100vh;
@@ -16,22 +18,19 @@ const Container = styled.div`
 
 function App() {
   const [toDoList, setToDoList] = useState(['리액트 공부하기', '운동하기', '책읽기']);
-  const [todo, setTodo] = useState('');
+
   const onDelete = (todo: string) => {
     setToDoList(toDoList.filter((item) => item !== todo));
   };
 
-  const onAdd = () => {
-      if (todo === '') return ;
-
+  const onAdd = (todo: string) => {
       setToDoList([...toDoList, todo]);
-      setTodo('');
   }
+
   return (
     <Container>
       <DataView toDoList={toDoList} onDelete={onDelete} />
-      <TextInput value={todo} onChange={setTodo} />
-      <Button label="추가" color="#304FFE" onClick={onAdd}/>
+      <ToDoInput  onAdd={onAdd}/>
     </Container>
   );
 }
