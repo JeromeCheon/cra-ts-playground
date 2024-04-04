@@ -4,6 +4,7 @@ import { DataView } from './components/DataView';
 import { useState } from 'react';
 import { ToDoInput } from './components/TodoInput';
 import { ShowInputButton } from 'components/ShowInputButton';
+import { InputContainer } from 'components/InputContainer';
 
 const Container = styled.div`
   height: 100vh;
@@ -16,7 +17,6 @@ const Container = styled.div`
 
 function App() {
   const [toDoList, setToDoList] = useState(['리액트 공부하기', '운동하기', '책읽기']);
-  const [showTodoInput, setShowTodoInput] = useState(false);
 
   const onDelete = (todo: string) => {
     setToDoList(toDoList.filter((item) => item !== todo));
@@ -24,14 +24,12 @@ function App() {
 
   const onAdd = (todo: string) => {
     setToDoList([...toDoList, todo]);
-    setShowTodoInput(false);
   };
 
   return (
     <Container>
       <DataView toDoList={toDoList} onDelete={onDelete} />
-      {showTodoInput && <ToDoInput onAdd={onAdd} />}
-      <ShowInputButton show={showTodoInput} onClick={() => setShowTodoInput(!showTodoInput)} />
+      <InputContainer onAdd={onAdd} />
     </Container>
   );
 }
