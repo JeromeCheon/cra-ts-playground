@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { Title } from '../Title';
-import {TextInput} from "../TextInput";
-import {Button} from "../Button";
-import {useState} from "react";
+import { TextInput } from '../TextInput';
+import { Button } from '../Button';
+import { useState } from 'react';
 
 const Background = styled.div`
   position: absolute;
@@ -41,24 +41,24 @@ const Container = styled.div`
 `;
 
 interface Props {
-    readonly onAdd: (toDo: string ) => void
+  readonly onAdd: (toDo: string) => void;
 }
-export const ToDoInput = ({onAdd}: Props) => {
-    const [todo, setTodo] = useState('');
-    const onAddTodo = () => {
-        if (todo === '') return;
+export const ToDoInput = ({ onAdd }: Props) => {
+  const [todo, setTodo] = useState('');
+  const onAddTodo = () => {
+    if (todo === '') return;
 
-        onAdd(todo)
-        setTodo('');
-    };
+    onAdd(todo);
+    setTodo('');
+  };
   return (
     <Container>
       <Background />
       <Contents>
         <Title label="할 일 추가" />
         <InputContainer>
-            <TextInput value={todo} onChange={setTodo} />
-            <Button label="추가" color="#304FFE" onClick={onAddTodo} />
+          <TextInput value={todo} onChange={setTodo} />
+          <Button label="추가" color="#304FFE" onClick={onAddTodo} />
         </InputContainer>
       </Contents>
     </Container>

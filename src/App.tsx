@@ -2,9 +2,6 @@ import './App.css';
 import styled from '@emotion/styled';
 import { DataView } from './components/DataView';
 import { useState } from 'react';
-import { TextInput } from './components/TextInput';
-import { Button } from './components/Button';
-import { Title } from './components/Title';
 import { ToDoInput } from './components/TodoInput';
 
 const Container = styled.div`
@@ -24,13 +21,13 @@ function App() {
   };
 
   const onAdd = (todo: string) => {
-      setToDoList([...toDoList, todo]);
-  }
+    setToDoList([...toDoList, todo]);
+  };
 
   return (
     <Container>
       <DataView toDoList={toDoList} onDelete={onDelete} />
-      <ToDoInput  onAdd={onAdd}/>
+      <ToDoInput onAdd={onAdd} />
     </Container>
   );
 }
