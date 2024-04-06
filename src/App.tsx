@@ -1,10 +1,8 @@
 import './App.css';
 import styled from '@emotion/styled';
 import { DataView } from './components/DataView';
-import { useState } from 'react';
-import { ToDoInput } from './components/TodoInput';
-import { ShowInputButton } from 'components/ShowInputButton';
 import { InputContainer } from 'components/InputContainer';
+import { ToDoListContextProvider } from './contexts/ToDoList';
 
 const Container = styled.div`
   height: 100vh;
@@ -16,20 +14,12 @@ const Container = styled.div`
 `;
 
 function App() {
-  const [toDoList, setToDoList] = useState(['리액트 공부하기', '운동하기', '책읽기']);
-
-  const onDelete = (todo: string) => {
-    setToDoList(toDoList.filter((item) => item !== todo));
-  };
-
-  const onAdd = (todo: string) => {
-    setToDoList([...toDoList, todo]);
-  };
-
   return (
     <Container>
-      <DataView toDoList={toDoList} onDelete={onDelete} />
-      <InputContainer onAdd={onAdd} />
+      <ToDoListContextProvider>
+        <DataView />
+        <InputContainer />
+      </ToDoListContextProvider>
     </Container>
   );
 }
