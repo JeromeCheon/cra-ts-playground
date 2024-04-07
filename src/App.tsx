@@ -1,7 +1,6 @@
 import './App.css';
 import styled from '@emotion/styled';
-import { DataView } from './components/DataView';
-import { InputContainer } from 'components/InputContainer';
+import { DataView } from './pages/DataView';
 import { ToDoListContextProvider } from './contexts/ToDoList';
 import { Route, Routes } from 'react-router-dom';
 
@@ -22,15 +21,7 @@ function App() {
     <Container>
       <ToDoListContextProvider>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <DataView />
-                <InputContainer />
-              </>
-            }
-          />
+          <Route path="/" element={<DataView />} />
           <Route
             path="*"
             element={
