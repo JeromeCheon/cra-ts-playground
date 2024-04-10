@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { Header } from './components/Header';
 import { BlogPost } from './components/BlogPost';
 import { useEffect, useState } from 'react';
+import { Button } from './components/Button';
 
 const Container = styled.div`
   height: 100vh;
@@ -11,6 +12,12 @@ const Container = styled.div`
   align-items: center;
   background-color: #eeeeee;
   overflow: scroll;
+`;
+
+const ButtonContainer = styled.div`
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
 `;
 
 interface Post {
@@ -37,6 +44,9 @@ function App() {
       {posts.map((post) => (
         <BlogPost title={post.title} body={post.body} key={post.id} />
       ))}
+      <ButtonContainer>
+        <Button label="등록" />
+      </ButtonContainer>
     </Container>
   );
 }
