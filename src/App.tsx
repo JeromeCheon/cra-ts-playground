@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 import { Header } from './components/Header';
 import { BlogPost } from './components/BlogPost';
 import { useEffect, useState } from 'react';
-import mockPosts from 'mock/posts.json';
 
 const Container = styled.div`
   height: 100vh;
@@ -24,9 +23,12 @@ function App() {
   const [posts, setPosts] = useState<ReadonlyArray<Post>>([]);
 
   useEffect(() => {
-    setTimeout(() => {
-      setPosts(mockPosts);
-    }, 1000);
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then((response) => response.json())
+      .then((json) => setPosts(json))
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
   return (
