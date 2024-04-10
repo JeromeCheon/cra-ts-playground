@@ -4,7 +4,7 @@ import { Header } from './components/Header';
 import { BlogPost } from './components/BlogPost';
 import { useEffect, useState } from 'react';
 import { Button } from './components/Button';
-import { Form } from './Form';
+import { Form } from './components/Form';
 
 const Container = styled.div`
   height: 100vh;
