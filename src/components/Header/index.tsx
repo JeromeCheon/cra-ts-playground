@@ -1,25 +1,20 @@
 import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
 
 const Container = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  background-color: #304ffe;
-  padding: 8px 0;
-  margin: 0;
+  background-color: #ffffff;
+  padding: 20px;
+  width: calc(100% - 40px);
+  margin-bottom: 20px;
 `;
-const StyledLink = styled(Link)`
-  color: #ffffff;
-  font-size: 20px;
-  text-decoration: none;
+const Title = styled.div`
+  font-size: 1.2rem;
+  font-weight: bold;
 `;
+
 export const Header = () => {
   return (
     <Container>
-      <StyledLink to="/">할일목록앱</StyledLink>
+      <Title>블로그 포스트</Title>
     </Container>
   );
 };
