@@ -2,6 +2,8 @@ import './App.css';
 import styled from '@emotion/styled';
 import { Header } from './components/Header';
 import { BlogPost } from './components/BlogPost';
+import { useEffect, useState } from 'react';
+import mockPosts from 'mock/posts.json';
 
 const Container = styled.div`
   height: 100vh;
@@ -12,11 +14,27 @@ const Container = styled.div`
   overflow: scroll;
 `;
 
+interface Post {
+  readonly id: number;
+  readonly userId: number;
+  readonly title: string;
+  readonly body: string;
+}
 function App() {
+  const [posts, setPosts] = useState<ReadonlyArray<Post>>([]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setPosts(mockPosts);
+    }, 1000);
+  }, []);
+
   return (
     <Container>
       <Header />
-      <BlogPost title={'sds'} body={'sdsdsdd'} />
+      {posts.map((post) => (
+        <BlogPost title={post.title} body={post.body} key={post.id} />
+      ))}
     </Container>
   );
 }
