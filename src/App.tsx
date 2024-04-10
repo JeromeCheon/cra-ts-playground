@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import { BlogPost } from './components/BlogPost';
 import { useEffect, useState } from 'react';
 import { Button } from './components/Button';
+import { Form } from './Form';
 
 const Container = styled.div`
   height: 100vh;
@@ -47,6 +48,7 @@ function App() {
       <ButtonContainer>
         <Button label="등록" />
       </ButtonContainer>
+      <Form />
     </Container>
   );
 }
