@@ -63,6 +63,31 @@ interface Props {
 export const Form = ({ onClose }: Props) => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
+
+  const registerPost = () => {
+    if (title === '' || body === '') return;
+
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      body: JSON.stringify({
+        userId: 1,
+        title,
+        body,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+        if (typeof onClose === 'function') onClose();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <Container>
       <Background />
@@ -77,7 +102,7 @@ export const Form = ({ onClose }: Props) => {
           <Input value={body} onChange={(e) => setBody(e.target.value)} />
         </InputGroup>
         <Actions>
-          <Button label="등록하기" onClick={onClose} />
+          <Button label="등록하기" onClick={registerPost} />
           <Button label="닫기" color="#304FFE" onClick={onClose} />
         </Actions>
       </Contents>
